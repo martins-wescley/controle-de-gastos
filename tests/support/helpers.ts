@@ -1,4 +1,4 @@
-import { APIRequestContext } from "@playwright/test";
+import { APIRequestContext, expect } from "@playwright/test";
 import { LoginModel } from "../fixtures/login.model";
 
 async function getToken(request: APIRequestContext) {
@@ -40,6 +40,59 @@ export async function deleteContaSemMovimentacao(request: APIRequestContext, nom
     const contaId = await findContaIdByName(request, nomeConta)
 
     await request.delete(`http://barrigarest.wcaquino.me/contas/${contaId}`, {
+        headers: {
+            Authorization:`JWT ${token}`
+        }
+    })
+}
+
+export async function postConta(request: APIRequestContext, nomeConta: string) {
+    const token = await getToken(request)
+
+    const novaConta = {
+        nome: nomeConta
+    }
+
+    const target = await request.post('http://barrigarest.wcaquino.me/contas/', { 
+        data: novaConta,
+        headers: {
+            Authorization:`JWT ${token}`
+        }
+    })
+
+    expect(target.status()).toBe(201)
+}
+
+//Movimentações
+async function getMovimentacao(request: APIRequestContext) {
+    const token = await getToken(request)
+
+    const getMovimentacoes = await request.get('http://barrigarest.wcaquino.me/transacoes/', {
+        headers: {
+            Authorization:`JWT ${token}`
+        }
+    })
+
+    const movimentacoes = JSON.parse(await getMovimentacoes.text())
+    return movimentacoes
+}
+
+async function findMovimentacaoIdByName(request: APIRequestContext, descMovimentacao: string) {
+    const movimentacaoes = await getMovimentacao(request)
+    let movimentacaoId
+    for(const data of movimentacaoes) {
+        if(data.descricao == descMovimentacao){
+            movimentacaoId = data.id
+        }
+    }
+    return movimentacaoId
+}
+
+export async function deleteMovimentacao(request: APIRequestContext, descMovimentacao: string) {
+    const token = await getToken(request)
+    const movimentacaoId = await findMovimentacaoIdByName(request, descMovimentacao)
+
+    const target = await request.delete(`http://barrigarest.wcaquino.me/transacoes/${movimentacaoId}`, {
         headers: {
             Authorization:`JWT ${token}`
         }

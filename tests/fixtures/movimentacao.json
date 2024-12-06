@@ -1,0 +1,31 @@
+{
+    "accounts": {
+        "nomeConta": "Conta Movimentação",
+        "nomeContaData": "Conta Data Movimentação",
+        "nomeContaPagamento": "Conta Pagamento",
+        "nomeContaDesc": "Conta Descrição",
+        "nomeContaInteressado": "Conta Interessado",
+        "nomeContaValor": "Conta Valor"
+    },
+
+    "alerts": {
+        "movimentacaoAlertSuccess": "Movimentação adicionada com sucesso!",
+        "movimentacaoDataAlert": "Data da Movimentação é obrigatório",
+        "movimentacaoPagamentoAlert": "Data do pagamento é obrigatório",
+        "movimentacaoDescAlert": "Descrição é obrigatório",
+        "movimentacaoInteressadoAlert": "Interessado é obrigatório",
+        "movimentacaoValorAlert": "Valor é obrigatório",
+        "movimentacaoValorFormatAlert": "Valor deve ser um número"
+    },
+
+    "createTransactions": {
+        "tipo": "DESP",
+        "dataMovimentacao": "01/10/2024",
+        "dataPagmento": "12/11/2024",
+        "descricao": "Validação Automatizada",
+        "interessado": "Wescley",
+        "valor": 1500.00,
+        "conta": "Conta Movimentação",
+        "situacao": "Pago"
+    }
+}

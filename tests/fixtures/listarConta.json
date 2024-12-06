@@ -1,0 +1,23 @@
+{
+    "editCount": {
+        "nomeConta": "Conta Edição",
+        "contaEditada": "Nova conta editada",
+        "mensagemContaEditada": "Conta alterada com sucesso!"
+    },
+
+    "blankAccount": {
+        "nomeConta": "Conta editada em branco",
+        "errorMessage": "Informe o nome da conta"
+    },
+
+    "duplicatedAccount": {
+        "nomeConta": "Conta edição duplicada",
+        "contaDuplicada": "Nova Conta",
+        "errorMessage": "Já existe uma conta com esse nome!"
+    },
+
+    "deleteAccount": {
+        "nomeConta": "Conta para exclusão",
+        "successDeleteAlert": "Conta removida com sucesso!"
+    }
+}

@@ -14,13 +14,13 @@ export class LoginPage {
 
     }
 
-    async login(login: LoginModel, successMensage: string) {
+    async login(login: LoginModel) {
         const inputEmail = this.page.locator('#email')
         await inputEmail.fill(login.email)
         const inputPassword = this.page.locator('#senha')
         await inputPassword.fill(login.senha)
         await this.page.click('css=button >> text=Entrar')
-        const target = this.page.locator(`css=.alert-success >> text=${successMensage}`)
+        const target = this.page.locator(`css=.alert-success >> text=${login.message}`)
         await expect(target).toBeVisible()
     }
 

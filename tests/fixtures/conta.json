@@ -1,0 +1,15 @@
+{
+    "success": {
+        "nomeConta": "Conta Teste",
+        "successMessage": "Conta adicionada com sucesso!"
+    },
+
+    "blankCount": {
+        "errorMessage": "Informe o nome da conta"
+    },
+
+    "duplicated": {
+        "nomeConta": "Conta para teste duplicado",
+        "errorMessage": "Já existe uma conta com esse nome!"
+    }
+}

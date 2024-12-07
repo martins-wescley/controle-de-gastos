@@ -9,7 +9,7 @@ test.beforeEach(({ page }) => {
     loginPage = new LoginPage(page)
 })
 
-test('Deve logar na aplicação', async () => {
+test('Deve logar na aplicação', { tag: '@regression' }, async () => {
     const login = data.success as LoginModel
     await loginPage.go()
     await loginPage.login(login)

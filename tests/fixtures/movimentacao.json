@@ -5,7 +5,10 @@
         "nomeContaPagamento": "Conta Pagamento",
         "nomeContaDesc": "Conta Descrição",
         "nomeContaInteressado": "Conta Interessado",
-        "nomeContaValor": "Conta Valor"
+        "nomeContaValor": "Conta Valor",
+        "nomeContaResumo": "Conta resumo mensal",
+        "nomeContaExcluirResumo": "Conta exclusão resumo",
+        "nomeContaComMovimentacao": "Conta com movimentação"
     },
 
     "alerts": {
@@ -15,7 +18,9 @@
         "movimentacaoDescAlert": "Descrição é obrigatório",
         "movimentacaoInteressadoAlert": "Interessado é obrigatório",
         "movimentacaoValorAlert": "Valor é obrigatório",
-        "movimentacaoValorFormatAlert": "Valor deve ser um número"
+        "movimentacaoValorFormatAlert": "Valor deve ser um número",
+        "movimentacaoDeleteAlertSucess": "Movimentação removida com sucesso!",
+        "contaEmUso": "Conta em uso na movimentações"
     },
 
     "createTransactions": {
@@ -26,6 +31,39 @@
         "interessado": "Wescley",
         "valor": 1500.00,
         "conta": "Conta Movimentação",
+        "situacao": "Pago"
+    },
+
+    "readMonthlyReport": {
+        "tipo": "REC",
+        "dataMovimentacao": "01/09/2024",
+        "dataPagmento": "01/10/2024",
+        "descricao": "Visualizar Resumo Mensal",
+        "interessado": "Wescley",
+        "valor": 5500.00,
+        "conta": "Conta resumo mensal",
+        "situacao": "Pago"
+    },
+
+    "deleteMonthlyReport": {
+        "tipo": "REC",
+        "dataMovimentacao": "01/03/2024",
+        "dataPagmento": "01/05/2024",
+        "descricao": "Excluir Resumo Mensal",
+        "interessado": "Wescley",
+        "valor": 5500.00,
+        "conta": "Conta exclusão resumo",
+        "situacao": "Pago"
+    },
+
+    "usedAccount": {
+        "tipo": "REC",
+        "dataMovimentacao": "01/03/2024",
+        "dataPagmento": "01/05/2024",
+        "descricao": "Conta em uso",
+        "interessado": "Wescley",
+        "valor": 5500.00,
+        "conta": "Conta com movimentação",
         "situacao": "Pago"
     }
 }

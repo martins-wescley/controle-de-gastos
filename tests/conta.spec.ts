@@ -17,7 +17,7 @@ test.beforeEach(({ page }) => {
     contaPage = new ContaPage(page)
 })
 
-test('Deve criar uma conta', async({ request }) => {
+test('Deve criar uma conta', { tag: '@regression' }, async ({ request }) => {
     const login = loginData.success as LoginModel
     await deleteContaSemMovimentacao(request, contaData.success.nomeConta)
     await loginPage.go()
@@ -28,7 +28,7 @@ test('Deve criar uma conta', async({ request }) => {
     await deleteContaSemMovimentacao(request, contaData.success.nomeConta)
 })
 
-test('Deve exibir alerta ao tentar criar uma conta em branco', async() => {
+test('Deve exibir alerta ao tentar criar uma conta em branco', async () => {
     const login = loginData.success as LoginModel
     await loginPage.go()
     await loginPage.login(login)
@@ -37,7 +37,7 @@ test('Deve exibir alerta ao tentar criar uma conta em branco', async() => {
     await contaPage.alertaDeErroDeveEstarVisivel(contaData.blankCount.errorMessage)
 })
 
-test('Deve exibir alerta ao tentar criar uma conta duplicada', async({ request }) => {
+test('Deve exibir alerta ao tentar criar uma conta duplicada', async ({ request }) => {
     const login = loginData.success as LoginModel
     await postConta(request, contaData.duplicated.nomeConta)
     await loginPage.go()

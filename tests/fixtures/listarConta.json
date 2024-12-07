@@ -19,5 +19,10 @@
     "deleteAccount": {
         "nomeConta": "Conta para exclusão",
         "successDeleteAlert": "Conta removida com sucesso!"
+    },
+
+    "usedAccount": {
+        "nomeConta": "Conta com movimentação",
+        "errorDeleteAlert": "Conta em uso na movimentações"
     }
 }

@@ -18,7 +18,7 @@ test.beforeEach(({ page }) => {
     movimentacaoPage = new MovimentacaoPage(page)
 })
 
-test('Deve criar uma movimentação', async ({ request }) => {
+test('Deve criar uma movimentação', { tag: '@regression' }, async ({ request }) => {
     const login = data.success as LoginModel
     const movimentacao = movimentacaoData.createTransactions as MovimentacaoModel
     await postConta(request, movimentacaoData.accounts.nomeConta)

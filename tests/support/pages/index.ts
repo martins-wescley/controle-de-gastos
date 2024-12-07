@@ -25,4 +25,9 @@ export class HomePage {
         const dropdownContas = this.page.locator('css=a >> text=Criar Movimentação')
         await dropdownContas.click()
     }
+
+    async clicarResumoMensal() {
+        const dropdownContas = this.page.locator('css=a >> text=Resumo Mensal')
+        await dropdownContas.click()
+    }
 } 

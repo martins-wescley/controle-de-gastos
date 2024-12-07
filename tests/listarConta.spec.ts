@@ -3,9 +3,11 @@ import { LoginPage } from "./support/pages/login/login";
 import { HomePage } from "./support/pages";
 import { ContaPage } from "./support/pages/conta/conta";
 import { LoginModel } from "./fixtures/login.model";
-import { deleteContaSemMovimentacao, postConta } from './support/helpers';
+import { deleteContaSemMovimentacao, postConta, postMovimentacao,deleteMovimentacao } from './support/helpers';
 import data from './fixtures/login.json'
 import listaData from './fixtures/listarConta.json'
+import movimentacaoData from './fixtures/movimentacao.json'
+import { MovimentacaoModel } from "./fixtures/movimentacao.model";
 
 let loginPage: LoginPage
 let homePage: HomePage
@@ -17,7 +19,7 @@ test.beforeEach(({ page }) => {
     contaPage = new ContaPage(page)
 })
 
-test('Deve editar uma conta', async({ request }) => {
+test('Deve editar uma conta', { tag: '@regression' }, async({ request }) => {
     const login = data.success as LoginModel
     await postConta(request, listaData.editCount.nomeConta)
     await loginPage.go()
@@ -58,7 +60,7 @@ test('Deve exibir alerta ao tentar editar uma conta duplicada', async({ request 
     await deleteContaSemMovimentacao(request, listaData.duplicatedAccount.contaDuplicada)
 })
 
-test('Deve excluir uma conta sem movimentação', async({ request }) => {
+test('Deve excluir uma conta sem movimentação', { tag: '@regression' }, async({ request }) => {
     const login = data.success as LoginModel
     await postConta(request, listaData.deleteAccount.nomeConta)
     await loginPage.go()
@@ -68,4 +70,15 @@ test('Deve excluir uma conta sem movimentação', async({ request }) => {
     await contaPage.alertaDeSucessoDeveEstarVisivel(listaData.deleteAccount.successDeleteAlert)
 })
 
-//test('Deve exibir um alerta ao tentar excluir uma conta com movimentação', async() => {})
+test('Deve exibir um alerta ao tentar excluir uma conta com movimentação', async({ request }) => {
+    const login = data.success as LoginModel
+    const movimentacao = movimentacaoData.usedAccount as MovimentacaoModel
+    await postMovimentacao(request, movimentacao)
+    await loginPage.go()
+    await loginPage.login(login)
+    await homePage.clicarListarConta()
+    await contaPage.clicarBotaoExcluir(listaData.usedAccount.nomeConta)
+    await contaPage.alertaDeErroDeveEstarVisivel(listaData.usedAccount.errorDeleteAlert)
+    await deleteMovimentacao(request, movimentacao.descricao)
+    await deleteContaSemMovimentacao(request, movimentacaoData.usedAccount.conta)
+})
